@@ -82,7 +82,47 @@
         (Notice month is excluded)</h4>
     <!-- Place Answer Here -->
       
-      
+      <label for="inputDate">Enter Target Date:</label>
+      <input type='datetime-local' id='inputDate'></input>
+      <button onclick="travel( document.getElementById('inputDate').value)">Launch</button>
+      <p id='dateDiff'></p>
+
+        <script>
+
+          function travel(date)
+            {
+              //get current datetime(milliseconds), compare to current datetime(milliseconds)
+              var now = new Date();
+
+              var travelDate = new Date(date);
+              
+              var difference = now.getTime() - travelDate.getTime();
+
+              var yearsDifference = Math.floor(difference/1000/60/60/24/365);
+              difference -= yearsDifference*1000*60*60*24*365
+              
+              var daysDifference = Math.floor(difference/1000/60/60/24);
+              difference -= daysDifference*1000*60*60*24
+
+              var hoursDifference = Math.floor(difference/1000/60/60);
+              difference -= hoursDifference*1000*60*60
+
+              var minutesDifference = Math.floor(difference/1000/60);
+              difference -= minutesDifference*1000*60
+
+              var secondsDifference = Math.floor(difference/1000);
+
+              document.getElementById('dateDiff').innerHTML = difference
+
+              // document.getElementById('dateDiff').innerHTML = "Your target is " + yearsDifference + " years, "
+              //                                                                   + daysDifference + " days, "
+              //                                                                   + hoursDifference + " hours, "
+              //                                                                   + minutesDifference + " minutes, and "
+              //                                                                   + secondsDifference + " seconds from current time."
+
+            }
+        </script>
+
 
     <!-- Place Answer Here -->
   </div>

@@ -7,7 +7,22 @@
       Add the elements and script needed so that a user can enter a number of sides and a number of times to roll; display on a button click.</h4>
     <!-- Place Answer Here -->
       
-      
+  <script>
+
+      class Dice
+      {
+        constructor(valSides)
+        {
+          this.sides = valSides;
+        }
+
+        roll()
+        {
+          result = (Math.floor(Math.random() * (sides + 1) - 1) + 1)
+        }
+      }
+  
+  </script>
 
     <!-- Place Answer Here -->
   </div>

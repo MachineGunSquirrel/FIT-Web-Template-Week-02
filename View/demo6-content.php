@@ -14,7 +14,23 @@
       {
         //Place Answer Here
         
-          
+          //if statement to validate
+          if(input == "")
+          {
+            //print error for empty input
+            document.getElementById("outcomeOne").innerHTML = "Input was empty";
+          }
+          else if(input.length > 10)
+          {
+            //print error for over 10 chars
+            document.getElementById("outcomeOne").innerHTML = "Input was over 10";
+          }
+          else
+          {
+            //print valid input
+            document.getElementById("outcomeOne").innerHTML = input;
+          }
+
 
         //Place Answer Here
       }
@@ -44,7 +60,30 @@
       {
         //Place Answer Here
         
-          
+          //switch to display item desc.
+          switch(input)
+          {
+            case "1":
+              document.getElementById("outcomeTwo").innerHTML = "Potioooooooon"
+            break;
+            case "2":
+              document.getElementById("outcomeTwo").innerHTML = "Oi, yu go eh loicence fo dat knoife?"
+            break;
+            case "3":
+              document.getElementById("outcomeTwo").innerHTML = "majik"
+            break;
+            case "4":
+              document.getElementById("outcomeTwo").innerHTML = "tactical assault pack"
+            break;
+            case "5":
+              document.getElementById("outcomeTwo").innerHTML = "literally just a severed body part"
+            break;
+            default:
+              document.getElementById("outcomeTwo").innerHTML = "bro wtf are you talking about?"
+            break;
+
+
+          }
 
         //Place Answer Here
       }
@@ -69,7 +108,32 @@
       {
         //Place Answer Here
         
-          
+          //declaration of boolean
+          var isFound = false;
+
+          //convert input to lower case
+          var lowerInput = input.toLowerCase();
+
+          //for loop to check each item in array
+          for(index = 0; index < gameFiles.length; index++)
+          {
+            //check if this is the game
+            if(gameFiles[index] == lowerInput)
+            {
+              //set boolean to show game was found
+              isFound = true;
+            }
+          }
+
+          //if to check if the game was in the list
+          if(isFound)
+          {
+            document.getElementById("outcomeThree").innerHTML = "Match Found!"
+          }
+          else
+          {
+            document.getElementById("outcomeThree").innerHTML = "No Match"
+          }
 
         //Place Answer Here
       }
@@ -96,7 +160,18 @@
       {
         //Place Answer Here
 
-          
+          //while loop that runs each time button is clicked
+          while(counter < input)
+          {
+            //increment our counter
+            ++counter;
+
+            //display each value
+            document.getElementById("outcomeFour").innerHTML = document.getElementById("outcomeFour").innerHTML + " " + counter;
+          }
+
+          //display number of times looped
+          document.getElementById("outcomeFour").innerHTML = document.getElementById("outcomeFour").innerHTML + "<br>The loop has run " + counter + " times.";
 
         //Place Answer Here
       }
@@ -118,7 +193,27 @@
       {
         //Place Answer Here
         
-          
+          //declare variable to hold the total, random, and display random
+          var intTotal = 0;
+          var intRandom;
+          var strDisplay = "";
+
+          //do while to loop through randoms until we find the total
+          do{
+            //get random
+            intRandom = Math.floor(Math.random() * 10) + 1;
+
+            //ensure that we don't go over
+            if(intTotal + intRandom <= input)
+            {
+              //add the numbers and display
+              intTotal += intRandom;
+              strDisplay += " " + intRandom;
+            }
+
+          }while(intTotal < input) //continue to loop until equal
+
+        document.getElementById("outcomeFive").innerHTML = strDisplay;
 
         //Place Answer Here
       }
@@ -141,6 +236,25 @@
       {
         //Place Answer Here
         
+          //trycatch to catch errors in process
+          try
+          {
+            //create array
+            var splitArray = input.split(",");
+
+            //throw first error if one occurs
+            if(splitArray.length < 2) throw "The entered string did not contain comma separators.";
+
+            //ensure that element three exists
+            if(splitArray.length < 3 || splitArray[2] == "") throw "No element exists in position three.";
+
+            //since we made it through validation, print elements
+            document.getElementById("outcomeSix").innerHTML = splitArray[2];
+          }
+          catch(message)
+          {
+            document.getElementById("outcomeSix").innerHTML = "An error has occured: " + message;
+          }
           
 
         //Place Answer Here
@@ -163,6 +277,19 @@
       {
         //Place Answer Here
 
+          //create starship object
+          var starship = 
+          {
+            //starship attributes
+            name: input,
+            speed: Math.random().toFixed(2) + " Light Years per Hour",
+            weaponsClass: "Level: " + (Math.floor(Math.random() * 10) + 1)
+          }
+
+          document.getElementById("outcomeSeven").innerHTML = 
+            "Name: " + starship.name + "<br/>" + 
+            "Speed: " + starship.speed + "<br/>" + 
+            "Weapon class: " + starship.weaponsClass + "<br/>";
           
 
         //Place Answer Here
@@ -184,7 +311,21 @@
 
       //Place Class Here (It's best to create classes outside the scope of functions to avoid creating a class with each click, rather than an object)
         
-
+        class Blaster
+        {
+          //constructor
+          constructor(nameVal, soundVal, typeVal)
+          {
+            this.name = nameVal;
+            this.sound = soundVal;
+            this.type = typeVal;
+          }
+          fire()
+          {
+            //print message to p tag
+            document.getElementById("outcomeEight").innerHTML = this.sound + "A ball of " + this.type + " blasts off into the distance";
+          }
+        }
 
       //Place Class Here
 
@@ -192,7 +333,26 @@
       {
         //Place Answer Here
         
-          
+        var weaponOne = new Blaster("flame cannon", "Fssssshhhhh", "fire");
+        var weaponTwo = new Blaster("plasma rifle", "BBrrrsssrrrttt", "plasma");
+        var weaponThree = new Blaster("explosive launcher", "Krak", "explosives");
+
+        //switch to determine which weapon should be fired
+
+        switch(input.toLowerCase())
+        {
+          case weaponOne.name:
+            weaponOne.fire();
+            break;
+            case weaponTwo.name:
+            weaponTwo.fire();
+            break;
+            case weaponThree.name:
+            weaponThree.fire();
+            break;
+            default:
+            document.getElementById("outcomeEight").innerHTML = "No weapon found";
+        }
 
         //Place Answer Here
       }
