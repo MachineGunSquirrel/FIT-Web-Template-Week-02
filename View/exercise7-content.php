@@ -24,14 +24,37 @@
           array("Aboleth", "10 (5,900 XP)", "17 (Natural Armor)", "135 (18d10 + 36)", "10 ft., swim 40 ft.", "Multiattack, Tentacle, Tail, Enslave (3/day), Legendary Action"),
           array("Beholder", "13 (10,000 XP)", "18 (natural armor)", "189 (19d10 + 76)", "0 ft., fly 20 ft. (hover)", "Bite, Eye Rays, Legendary Action"),
           array("Tarrasque", "30 (155,000 XP)", "25 (Natural Armor)", "676 (33d20 + 330)", "40 ft.", "Multiattack, Claw, Horns, Tail, Frightful Presence, Swallow, Legendary Action"),
-          //array("Three Kobolds in a Trenchcoat", "1 (200 XP)", "12", "15 (6d6 - 6)", "30 ft.", "Multiattack, Dagger, Sling")
+          array("Three Kobolds in a Trenchcoat", "1 (200 XP)", "12", "15 (6d6 - 6)", "30 ft.", "Multiattack, Dagger, Sling")
         );
       ?>
     <!-- /Given Material -->
 
     <!-- Place Answer Here -->
 
-    
+      <table style='table'>
+        <tr>
+          <th>Name</th>
+          <th>Challenge rating</th>
+          <th>Armor Class</th>
+          <th>HP</th>
+          <th>Speed</th>
+          <th>Actions</th>
+        </tr>
+          <?php
+            for($index = 0; $index < count($creatureList); $index++){
+              echo"
+                <tr>
+                  <td>{$creatureList[$index][0]}</td>
+                  <td>{$creatureList[$index][1]}</td>
+                  <td>{$creatureList[$index][2]}</td>
+                  <td>{$creatureList[$index][3]}</td>
+                  <td>{$creatureList[$index][4]}</td>
+                  <td>{$creatureList[$index][5]}</td>
+                </tr>";
+            }
+          ?>
+      </table>
+
 
     <!-- Place Answer Here -->
   </div>
