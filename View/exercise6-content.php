@@ -62,25 +62,25 @@
       (be creative and useful, it'll earn you more points! :)</h4>
     <!-- Place Answer Here -->
       
-      <label for="valSides">Number of Sides:</label>
-        <input id="valSides">
-        <label for="valRolls">Number of Rolls:</label>
-        <input id="valRolls">
-        <!-- value to be favored -->
+      <label for="valSide">Number of Sides:</label>
+        <input id="valSide"><br><br>
+      <label for="valRollsStore">Number of Rolls:</label>
+        <input id="valRollsStore"><br><br>
+      <!-- value to be favored -->
         <label for="weighed">Weighted value:</label>
-        <input id="weighed">
-        <!-- how heavy weight is -->
+        <input id="weighed"><br><br>
+      <!-- how heavy weight is -->
         <label for="weight">Mass of weight:</label>
-        <input id="weight"> 
-        <button onclick="questionTwo(document.getElementById('valSides').value,  
-                                     document.getElementById('valRolls').value, 
+        <input id="weightStore"> <br><br>
+        <button onclick="questionTwo(document.getElementById('valSide').value,  
+                                     document.getElementById('valRollsStore').value, 
                                      document.getElementById('weighed').value, 
-                                     document.getElementById('weight').value)">Roll</button>
+                                     document.getElementById('weightStore').value)">Roll</button>
         <p id="outcomeTwo"></p>
         
           <script>
 
-              class Dice
+              class WeightedDice
               {
                 constructor(valSidesVal)
                 {
@@ -94,25 +94,28 @@
                 }
               }
 
-              function questionTwo(valSides, valRolls, weighed, weight)
+              function questionTwo(valSide, valRollsStore, weighed, weightStore)
               {
+                console.log('side count' + valSide);
                 var resultOne = '';
                 var resultTotal = 0;
-                var die = new Dice(valSides);
+                var die = new WeightedDice(valSide);
                 var rollResult = 0;
-                //store original value of weight
-                var weightStore = weight;
+                //turn stored roll value to decremented variable
+                valRolls = valRollsStore;
+                //turn stored weight to decremented variable
+                var weight = weightStore;
                 //boolean trip variable for weight loop
                 var weightLoop = 0;
-                //while loop iterating roll function until rolls variable reaches 0
+                //iterate roll function until rolls variable reaches 0
                 while(valRolls > 0)
                 {
                  
-                  //calls roll function from class
+                  //call roll function from class
                   rollResult = die.roll();
-                  //compares results to weight number and allows roll if result is favorable
-                  if (weightLoop == 0 && weight > 0 && weighed == rollResult) {
-                    //aggregates successful results
+                  //compare results to weight number and records roll if result is favorable
+                  if (weightLoop == 0 && weight > 0 && weighed == rollResult || weight == 0) {
+                    //aggregate successful results
                     resultOne += " " + rollResult;
                     //sums successful results
                     resultTotal += rollResult;
@@ -129,6 +132,7 @@
                   }
                   else
                   {
+                    //weight loop
                     while (weightLoop == 1) {
                       rollResult = die.roll();
                       //if for successfully weighted results
