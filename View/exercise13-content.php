@@ -5,7 +5,7 @@
     <h1>Question #1:</h1>
     <h4>Add the neccessary media queries so that the picture below is removed when the width drops below 1530 pixels.</h4>
 
-        <image id="locationPic" src="./view/public/images/fortisureit-location.png" alt="Fortisureit Building" ></image>
+        <image id="locationPic" src="./view/public/images/fortisureit-location.png" alt="Fortisureit Building" class='its-ya-boi'></image>
     <!-- Place Answer Here -->
 
       <!-- Your code should be in the scss file :) -->

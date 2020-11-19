@@ -277,4 +277,10 @@ p {
     transform: translateX(0);
   }
 }
+
+@media only screen and (max-width: 1530px) {
+  .its-ya-boi {
+    display: none;
+  }
+}
 /*# sourceMappingURL=custom-styles.css.map */
